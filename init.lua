@@ -25,6 +25,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.keymap.set({'n', 'x'}, 'gy', '"+y"')
 vim.keymap.set({'n', 'x'}, 'gp', '"+p"')
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
 
 -- LAZYVIM
 
@@ -74,11 +76,13 @@ lazy.setup({
 	{ 'lewis6991/gitsigns.nvim', name = 'gitsigns'},
 	{ 'nvim-lua/plenary.nvim', name = 'plenary'},
 	{'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
- 	{'neovim/nvim-lspconfig'},
+	{'neovim/nvim-lspconfig'},
 	{'hrsh7th/cmp-nvim-lsp'},
 	{'hrsh7th/nvim-cmp'},
 	{'L3MON4D3/LuaSnip'},
-	{'justinmk/vim-sneak', name = 'sneak'}
+	{'justinmk/vim-sneak', name = 'sneak'},
+	{'numToStr/Comment.nvim', name = 'comment'},
+	{'craftzdog/solarized-osaka.nvim', name = 'osaka'}
 })
 
 require('plugins.lualine')
@@ -87,8 +91,15 @@ require('plugins.treesitter')
 require('plugins.nvim-tree')
 require('plugins.telescope')
 require('plugins.lsp_zero')
+require('plugins.comment')
 
 -- apply the colorscheme
+require('solarized-osaka').setup({
+	transparent = false
+})
 vim.opt.termguicolors = true
-vim.cmd.colorscheme('rose-pine')
+vim.cmd.colorscheme('solarized-osaka')
 
+
+--- user commands
+vim.api.nvim_create_user_command('Jsonf', '%!jq .', {})
