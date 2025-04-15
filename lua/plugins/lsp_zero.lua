@@ -10,8 +10,6 @@ end)
 
 lsp_zero.setup_servers({'gopls'})
 
-
-
 -- autocomplete customizations
 
 local cmp = require('cmp')

@@ -9,7 +9,6 @@ require('nvim-treesitter.configs').setup({
 		'bash',
 		'dockerfile',
 		'terraform',
-		'typescript',
 		'sql',
     'lua',
   },
